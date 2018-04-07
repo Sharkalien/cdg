@@ -1,19 +1,19 @@
 {
-  "name": "cdg",
-  "version": "1.0.0",
-  "description": "Comedy Dot Gold",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sharkalien/cdg.git"
-  },
-  "author": "Sharkalien",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Sharkalien/cdg/issues"
-  },
-  "homepage": "http://comedy-dot.gold/"
+	"name": "cdg",
+	"version": "1.0.0",
+	"description": "Comedy Dot Gold",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Sharkalien/cdg.git"
+	},
+	"author": "Sharkalien",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Sharkalien/cdg/issues"
+	},
+	"homepage": "http://comedy-dot.gold/"
 }
