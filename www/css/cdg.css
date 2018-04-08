@@ -22,7 +22,7 @@ body {
 }
 
 .bars {
-	background-image: url("../img/bars.gif");
+	background-image: url("/img/bars.gif");
 	height: 167px;
 	width: 688px;
 	display: block;
@@ -30,7 +30,7 @@ body {
     margin-right: auto;
 }
 .navbar {
-	background-image: url("../img/goldplate.png");
+	background-image: url("/img/goldplate.png");
 	width: 344px;
 	height: 84px;
 	margin-left: auto;
