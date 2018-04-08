@@ -1,0 +1,60 @@
+body {
+    background-color: #64b2db;
+    margin: 0px;
+}
+
+.superdiv {
+    background: linear-gradient(#ffe623, #ff5700);
+	margin: auto;
+    width: 60%;
+    padding: 0px 20px 0px 20px;
+}
+
+.main {
+    background-color: #64b2db;
+}
+
+.banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0% 0% 0%;
+}
+
+.bars {
+	background-image: url("../img/bars.gif");
+	height: 167px;
+	width: 688px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar {
+	background-image: url("../img/goldplate.png");
+	width: 344px;
+	height: 84px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.naviconbunch {
+	width: 100%;
+	display: block;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.post {
+	background-color: #ffe899;
+	font-family: "Comic Sans MS", sans-serif;
+	padding: 0px 20px 0px 20px;
+	letter-spacing: 3px;
+	margin: 20px 30px 20px 30px;
+	image-align: 20px 0px 20px 0px
+	text-align: 20px 0px 20px 0px;
+}
+
+.postarea {
+	background-color: #64b2db;
+	padding: 20px 0px 20px 0px;
+}
