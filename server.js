@@ -9,7 +9,7 @@ const production = process.argv[2] === "production";
 			return eval(v);
 		},
 		domain: production ? "comedy-dot.gold" : "localhost",
-		httpPort: 80,
+		httpPort: 8080,
 		githubPayloadURL: "/githubwebhook",
 		githubSecret: secret.github.secret,
 		githubToken: secret.github.token
