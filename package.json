@@ -17,6 +17,7 @@
 	},
 	"homepage": "http://comedy-dot.gold/",
 	"dependencies": {
+		"fs-extra": "^5.0.0",
 		"servecube": "^1.11.7"
 	}
 }
