@@ -5,9 +5,7 @@ const secret = require("./data/secret.js");
 const production = process.argv[2] === "production";
 (async () => {
 	const cube = await serve({
-		eval: v => {
-			return eval(v);
-		},
+		eval: v => eval(v),
 		domain: production ? "comedy-dot.gold" : "localhost",
 		httpPort: 8080,
 		githubPayloadURL: "/githubwebhook",
