@@ -1,24 +1,23 @@
 body {
-    background-color: #64b2db;
-    margin: 0px;
+	background-color: #64b2db;
+	margin: 0px;
 }
 
 .superdiv {
-    background: linear-gradient(#ffe623, #ff5700);
+	background: linear-gradient(#ffe623, #ff5700);
 	margin: auto;
-    width: 60%;
-    padding: 0px 20px 0px 20px;
+	width: 810px;
+	padding: 0px 20px 0px 20px;
 }
 
 .main {
-    background-color: #64b2db;
+	background-color: #64b2db;
 }
 
 .banner {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px 0% 0% 0%;
+	display: block;
+	margin: auto;
+	padding: 15px 0% 0% 0%;
 }
 
 .bars {
@@ -26,22 +25,18 @@ body {
 	height: 167px;
 	width: 688px;
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin: auto;
 }
 .navbar {
 	background-image: url("/img/goldplate.png");
 	width: 344px;
 	height: 84px;
-	margin-left: auto;
-    margin-right: auto;
+	margin: auto;
+	text-align: center;
 }
 
 .naviconbunch {
-	width: 100%;
-	display: block;
-    margin-left: 35px;
-    margin-right: 35px;
+	padding: 15px 0 0 9px;
 }
 
 .post {
@@ -50,11 +45,21 @@ body {
 	padding: 0px 20px 0px 20px;
 	letter-spacing: 3px;
 	margin: 20px 30px 20px 30px;
-	image-align: 20px 0px 20px 0px
-	text-align: 20px 0px 20px 0px;
+	text-align: center;
 }
 
 .postarea {
 	background-color: #64b2db;
 	padding: 20px 0px 20px 0px;
+}
+
+.crisp {
+	image-rendering:optimizeSpeed;             /* Legal fallback */
+	image-rendering:-moz-crisp-edges;          /* Firefox        */
+	image-rendering:-o-crisp-edges;            /* Opera          */
+	image-rendering:-webkit-optimize-contrast; /* Safari         */
+	image-rendering:optimize-contrast;         /* CSS3 Proposed  */
+	image-rendering:crisp-edges;               /* CSS4 Proposed  */
+	image-rendering:pixelated;                 /* CSS4 Proposed  */
+	-ms-interpolation-mode:nearest-neighbor;
 }
