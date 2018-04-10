@@ -6,7 +6,7 @@ const production = process.argv[2] === "production";
 (async () => {
 	const cube = await serve({
 		eval: v => eval(v),
-		domain: production ? "comedy-dot.gold" : "localhost",
+		domain: production ? "comedy-dot.gold" : "localhost:8080",
 		errorDir: "error",
 		httpPort: 8080,
 		githubPayloadURL: "/githubwebhook",
