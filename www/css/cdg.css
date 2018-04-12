@@ -1,6 +1,7 @@
 body {
 	background-color: #64b2db;
 	margin: 0px;
+	font-family: "Arial", sans-serif;
 }
 
 .superdiv {
@@ -41,16 +42,17 @@ body {
 
 .post {
 	background-color: #ffe899;
-	font-family: "Comic Sans MS", sans-serif;
 	padding: 0px 20px 0px 20px;
-	letter-spacing: 3px;
 	margin: 20px 30px 20px 30px;
-	text-align: center;
 }
 
 .postarea {
 	background-color: #64b2db;
 	padding: 20px 0px 20px 0px;
+}
+
+.buttons {
+	text-align: center;
 }
 
 .crisp {
