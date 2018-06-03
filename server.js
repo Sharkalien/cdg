@@ -4,8 +4,10 @@ const {serve, html} = require("servecube");
 const secret = require("./data/secret.js");
 const production = process.argv[2] === "production";
 (async () => {
+	const myEval = v => eval(v);
+	require("replthis")(myEval);
 	const cube = await serve({
-		eval: v => eval(v),
+		eval: myEval,
 		domain: production ? "comedy-dot.gold" : "localhost:8080",
 		errorDir: "error",
 		httpPort: 8080,
@@ -14,7 +16,4 @@ const production = process.argv[2] === "production";
 		githubToken: secret.github.token
 	});
 	const {load} = cube;
-	process.openStdin().on("data", input => {
-		console.log(eval(String(input)));
-	});
 })();
