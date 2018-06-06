@@ -1,7 +1,7 @@
 console.log("< Server >");
 const fs = require("fs-extra");
 const {serve, html} = require("servecube");
-const secret = require("./data/secret.js");
+const secret = require("./secret/secret.js");
 const production = process.argv[2] === "production";
 (async () => {
 	const myEval = v => eval(v);
