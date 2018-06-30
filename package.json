@@ -19,6 +19,6 @@
 	"dependencies": {
 		"fs-extra": "^5.0.0",
 		"replthis": "^1.0.1",
-		"servecube": "^1.15.3"
+		"servecube": "^1.15.9"
 	}
 }
