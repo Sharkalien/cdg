@@ -3,6 +3,7 @@ const fs = require("fs-extra");
 const {serve, html} = require("servecube");
 const secret = require("./secret/secret.js");
 const production = process.argv[2] === "production";
+const pageNameTest = /\/(.*?)\/?$/;
 (async () => {
 	const myEval = v => eval(v);
 	require("replthis")(myEval);
@@ -10,6 +11,7 @@ const production = process.argv[2] === "production";
 		eval: myEval,
 		domain: production ? "comedy-dot.gold" : "localhost:8080",
 		errorDir: "error",
+		loadDirs: ["load"],
 		httpPort: 8080,
 		githubPayloadURL: "/githubwebhook",
 		githubSecret: secret.github.secret,
