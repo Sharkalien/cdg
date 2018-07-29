@@ -2,20 +2,18 @@ this.value = (await load("load/head", this)).value;
 this.value += html`
 	<div class="box">
 		<center>
-			<br>
-			<button>Button</button>
-			<br>
-			<br>
-			<b>The "Postbox"</b>
-			<br>
-			<br>
-			<textarea style="width: 700px; height: 250px;"></textarea>
-			<br>
-			<button>Post It</button>
-			<br>
-			<br>
+			<form>
+				<b>The "Postbox"</b>
+				<br>
+				<br>
+				<textarea required style="width: 700px; height: 250px;"></textarea>
+				<br>
+				<button type="submit">Post It</button>
+			</form>
 		</center>
 	</div>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="script.js"></script>
 `;
 this.value += (await load("load/foot", this)).value;
 this.done();
