@@ -4,7 +4,7 @@ googleAuthClient.verifyIdToken({
 }).then(ticket => {
 	const id = ticket.getPayload().sub;
 	console.log(id);
-	context.done();
+	this.done();
 }).catch(err => {
 	context.value = {
 		error: err.message
