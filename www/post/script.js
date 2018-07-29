@@ -9,7 +9,7 @@ document.querySelector("form").addEventListener("submit", evt => {
 				req.open("POST", "/post", true);
 				req.onreadystatechange = () => {
 					if(req.readyState === XMLHttpRequest.DONE) {
-						if(req.status === 200) {
+						if(Math.floor(req.status / 100) === 2) {
 							alert("Success!");
 							location.href = "/";
 						} else {
