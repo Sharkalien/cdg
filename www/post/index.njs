@@ -6,7 +6,7 @@ this.value += html`
 				<b>The "Postbox"</b>
 				<br>
 				<br>
-				<textarea required style="width: 700px; height: 250px;"></textarea>
+				<textarea required></textarea>
 				<br>
 				<button type="submit">Post It</button>
 			</form>

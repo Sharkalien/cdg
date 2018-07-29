@@ -18,7 +18,8 @@
 	"homepage": "http://comedy-dot.gold/",
 	"dependencies": {
 		"fs-extra": "^5.0.0",
+		"google-auth-library": "^1.6.1",
 		"replthis": "^1.0.1",
-		"servecube": "^1.15.10"
+		"servecube": "^1.15.11"
 	}
 }
