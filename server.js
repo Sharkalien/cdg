@@ -4,7 +4,7 @@ const {serve, html} = require("servecube");
 const {OAuth2Client} = require("google-auth-library");
 const secret = require("./secret/secret.js");
 const production = process.argv[2] === "production";
-const googleAuthClient = new OAuth2Client(youKnow.google.id);
+const googleAuthClient = new OAuth2Client(secret.google.id);
 const pageNameTest = /\/(.*?)\/?$/;
 (async () => {
 	const myEval = v => eval(v);
