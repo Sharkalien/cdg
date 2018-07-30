@@ -1,11 +1,9 @@
-this.res.set("Content-Type", "application/json");
+this.res.set("Content-Type", "text/plain");
 try {
 	this.req.body = JSON.parse(this.req.body);
 } catch(err) {
 	this.status = 400;
-	this.value = {
-		error: err.message
-	};
+	this.value = err.message;
 	this.done();
 	return;
 }
@@ -17,16 +15,12 @@ googleAuthClient.verifyIdToken({
 	if(user) {
 		// this.req.body.tags.split(",").map(byTag).filter(forTags)
 	} else {
-		this.value = {
-			error: "Your IP has been recorded and traced. You will not be safe."
-		};
+		this.value = "Your IP has been recorded and traced. You will not be safe.";
 		this.status = 403;
 	}
 	this.done();
 }).catch(err => {
-	this.value = {
-		error: err.message
-	};
+	this.value = err.message;
 	this.status = 422;
 	this.done();
 });
