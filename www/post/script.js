@@ -17,6 +17,7 @@
 						if(req.readyState === XMLHttpRequest.DONE) {
 							if(Math.floor(req.status / 100) === 2) {
 								alert("Post successful!");
+								window.onbeforeunload = undefined;
 								location.href = "/";
 							} else {
 								alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);

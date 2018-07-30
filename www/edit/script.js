@@ -85,6 +85,7 @@
 						if(req.readyState === XMLHttpRequest.DONE) {
 							if(Math.floor(req.status / 100) === 2) {
 								alert("Deletion successful!");
+								window.onbeforeunload = undefined;
 								location.reload();
 							} else {
 								alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);
