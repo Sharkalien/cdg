@@ -13,7 +13,7 @@
 			}).then(auth2 => {
 				auth2.signIn().then(user => {
 					const req = new XMLHttpRequest();
-					req.open("POST", "/post", true);
+					req.open("POST", "/api", true);
 					req.setRequestHeader("Content-Type", "application/json");
 					req.onreadystatechange = () => {
 						if(req.readyState === XMLHttpRequest.DONE) {
