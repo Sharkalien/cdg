@@ -12,16 +12,8 @@ this.value += html`
 			<a href="https://mspfa.com/?s=23208&p=1">SCAREHOUSE</a> - A Romantic Hero navigates through the corridors of a Gothic mansion.
 			<br>
 			<br>
-			<a href="https://mspfa.com/?s=20129&p=1">ABRAXAL SHELL</a> - Four kids who are really bad at video games play a video game.
-			<br>
-			<br>
 			<a href="https://mspfa.com/?s=20518&p=1">MORNING</a> - Good morning. Time to play a game.
 		</b>
-		<br>
-		<br>
-		<center>
-			<img src="/scraps/gamers.gif" height="70%" width="70%" title="WHAT'S UP GAMERS">
-		</center>
 	</div>
 `;
 this.value += (await load("load/foot", this)).value;
