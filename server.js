@@ -46,12 +46,12 @@ const postsPerPage = 10;
 					</div>
 				`;
 			}
-			const urlStart = tag ? `/tagged/${tag}/` : "/page/";
+			const urlStart = tag ? html`/tagged/$${tag}/` : "/page/";
 			const showPrevButton = page > 1;
 			const showNextButton = page < maxPage;
 			return value + html`
-				<div class="buttons">
-					${(showPrevButton ? html`<a href="${urlStart + (page - 1)}">&lt;-</a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;•&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}">-&gt;</a>` : "")}
+				<div id="buttons">
+					${(showPrevButton ? html`<a href="${urlStart}1"><img src="/img/arrow_first.png"></a>&nbsp;<a href="${urlStart + (page - 1)}"><img src="/img/arrow_prev.png"></a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;<img src="/img/arrow_dot.png">&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}"><img src="/img/arrow_next.png"></a>&nbsp;<a href="${urlStart + maxPage}"><img src="/img/arrow_last.png"></a>` : "")}
 				</div>
 			`;
 		} else {

@@ -24,8 +24,8 @@ body {
 header {
 	padding-top: 15px;
 }
-nav img:hover {
-	filter: brightness(2);
+nav img:hover, #buttons a:hover {
+	filter: brightness(4);
 }
 #banner {
 	display: block;
@@ -69,6 +69,6 @@ center {
 .post .body {
 	margin: 1em 0;
 }
-.buttons {
+#buttons {
 	text-align: center;
 }
