@@ -14,11 +14,11 @@ googleAuthClient.verifyIdToken({
 	const id = ticket.getPayload().sub;
 	const user = users[id];
 	if(user) {
-		posts.unshift({
-			author: id,
+		posts.push({
+			user: id,
 			date: Date.now(),
 			body: this.req.body.body.trim().replace(brs, "<br>"),
-			tags: this.req.body.tags.split(",").map(byTag).filter(forTags)
+			tags: this.req.body.tags.split(",").map(cleanTag).filter(forTags)
 		});
 		await fs.writeFile("secret/_posts.json", JSON.stringify(posts));
 		await fs.unlink("secret/posts.json");
