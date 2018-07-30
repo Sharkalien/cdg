@@ -13,6 +13,7 @@ this.value = html`
 			<meta name="keywords" content="comedy, gold, sharkalien, radical dude 42, timaeustesticle, spicer, gut bustingly, funny, comics">
 			<meta name="description" content="$${this.description}">
 			<meta name="theme-color" content="#ffcf40">
+			<meta name="google-signin-client_id" content="${youKnow.google.id}">
 			<link rel="stylesheet" href="/css/cdg.css">
 			<link rel="icon" href="/img/favicon.gif">
 		</head>

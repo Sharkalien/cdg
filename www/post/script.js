@@ -8,17 +8,15 @@
 	form.addEventListener("submit", evt => {
 		evt.preventDefault();
 		gapi.load("auth2", () => {
-			gapi.auth2.init({
-				client_id: "148379982026-77jpbdhuohqvvar9bn2lohk4uct6aauo.apps.googleusercontent.com"
-			}).then(auth2 => {
+			gapi.auth2.init().then(auth2 => {
 				auth2.signIn().then(user => {
 					const req = new XMLHttpRequest();
-					req.open("POST", "/api", true);
+					req.open("POST", "/api/posts", true);
 					req.setRequestHeader("Content-Type", "application/json");
 					req.onreadystatechange = () => {
 						if(req.readyState === XMLHttpRequest.DONE) {
 							if(Math.floor(req.status / 100) === 2) {
-								alert("Success!");
+								alert("Post successful!");
 								location.href = "/";
 							} else {
 								alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);

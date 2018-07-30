@@ -3,7 +3,10 @@ this.value += html`
 	<div class="box">
 		<center>
 			<form autocomplete="off">
-				The "Postbox"
+				The "Editbox"
+				<br>
+				<br>
+				Post ID: <input name="id" type="number" value="${posts.length}" min="1" max="${posts.length}" step="1">
 				<br>
 				<br>
 				<textarea name="body" required></textarea>
@@ -11,13 +14,13 @@ this.value += html`
 				Tags: <input name="tags"></input>
 				<br>
 				<br>
-				<button type="submit">Post It</button>
+				<button type="submit">Edit It</button> <button id="delete">Delete It</button>
 			</form>
 		</center>
 	</div>
 	<div id="preview" class="post box">
 		<div class="header">
-			By <a class="author" href="javascript:;">You</a>
+			By <a class="author" href="javascript:;">?</a>
 		</div>
 		<div class="body"></div>
 		<div class="footer">
