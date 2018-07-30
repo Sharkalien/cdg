@@ -26,10 +26,10 @@ this.value = html`
 						<div class="bars">
 							<nav>
 								<a href="/comics/"><img src="/img/comics.png" title="COMICS"></a>
-								<a href="/"><img src="/img/funnies.png" title="FUNNIES"></a>
+								<a href="/funnies/"><img src="/img/funnies.png" title="FUNNIES"></a>
 								<a href="/misc/"><img src="/img/misc.png" title="MISC"></a>
-								<a href="/"><img src="/img/podcasts.png" title="PODCAST"></a>
-								<a href="/"><img src="/img/info.png" title="ABOUT"></a>
+								<a href="/podcast/"><img src="/img/podcasts.png" title="PODCAST"></a>
+								<a href="/about/"><img src="/img/info.png" title="ABOUT"></a>
 							</nav>
 						</div>
 					</header>
