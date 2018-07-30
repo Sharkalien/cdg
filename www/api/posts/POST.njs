@@ -11,9 +11,18 @@ googleAuthClient.verifyIdToken({
 	idToken: this.req.body.token,
 	audience: secret.google.id
 }).then(async ticket => {
-	const user = JSON.parse(await fs.readFile("secret/users.json"))[ticket.getPayload().sub];
+	const id = ticket.getPayload().sub;
+	const user = users[id];
 	if(user) {
-		// this.req.body.tags.split(",").map(byTag).filter(forTags)
+		posts.unshift({
+			author: id,
+			date: Date.now(),
+			body: this.req.body.body.trim().replace(brs, "<br>"),
+			tags: this.req.body.tags.split(",").map(byTag).filter(forTags)
+		});
+		await fs.writeFile("secret/_posts.json", JSON.stringify(posts));
+		await fs.unlink("secret/posts.json");
+		await fs.rename("secret/_posts.json", "secret/posts.json");
 	} else {
 		this.value = "Your IP has been recorded and traced. You will not be safe.";
 		this.status = 403;
