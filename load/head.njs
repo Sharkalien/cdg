@@ -13,6 +13,12 @@ this.value = html`
 			<meta name="keywords" content="comedy, gold, sharkalien, radical dude 42, timaeustesticle, spicer, gut bustingly, funny, comics">
 			<meta name="description" content="$${this.description}">
 			<meta name="theme-color" content="#ffcf40">
+			<meta property="og:type" content="website">
+			<meta property="og:url" content="http://comedy-dot.gold/">
+			<meta property="og:site_name" content="COMEDY-DOT.GOLD">
+			<meta property="og:image" content="http://comedy-dot.gold/img/favicon.gif">
+			<meta property="og:title" content="$${this.title}">
+			<meta property="og:description" content="$${this.description}">
 			<meta name="google-signin-client_id" content="${secret.google.id}">
 			<link rel="stylesheet" href="/css/cdg.css">
 			<link rel="icon" href="/img/favicon.gif">
