@@ -23,12 +23,12 @@ const postsPerPage = 10;
 	const users = JSON.parse(await fs.readFile("secret/users.json"));
 	const posts = JSON.parse(await fs.readFile("secret/posts.json"));
 	const renderPosts = (page, tag) => {
+		let value = tag ? html`<br><i>tagged: $${tag}</i><br>` : "";
 		tag = cleanTag(tag);
 		const targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : posts;
 		if(targetPosts.length) {
 			const maxPage = Math.ceil(targetPosts.length / postsPerPage);
 			page = Math.min(maxPage, Math.ceil(page));
-			let value = "";
 			let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
 			const end = Math.min(targetPosts.length, start + postsPerPage - 1);
 			start = Math.max(0, start);
@@ -47,13 +47,15 @@ const postsPerPage = 10;
 				`;
 			}
 			const urlStart = tag ? `/tagged/${tag}/` : "/page/";
+			const showPrevButton = page > 1;
+			const showNextButton = page < maxPage;
 			return value + html`
 				<div class="buttons">
-					${page > 1 ? html`<a href="${urlStart + (page - 1)}">&lt;-</a>` : ""}&nbsp;•&nbsp;${page < maxPage ? html`<a href="${urlStart + (page + 1)}">-&gt;</a>` : ""}
+					${(showPrevButton ? html`<a href="${urlStart + (page - 1)}">&lt;-</a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;•&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}">-&gt;</a>` : "")}
 				</div>
 			`;
 		} else {
-			return html`<center>No posts were found.</center>`;
+			return value + html`<br><center>THE COMEDY GOLD MINE HAS RUN DRY.</center>`;
 		}
 	};
 	const cube = await serve({

@@ -48,12 +48,12 @@ nav {
 	box-sizing: border-box;
 }
 main {
-	padding: 20px 0;
+	padding: 20px 30px;
 }
 .box {
 	background-color: #ffe899;
 	padding: 30px;
-	margin: 20px 30px;
+	margin: 20px 0;
 }
 textarea {
 	width: 100%;

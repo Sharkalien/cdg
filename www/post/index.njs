@@ -3,7 +3,7 @@ this.value += html`
 	<div class="box">
 		<center>
 			<form>
-				<b>The "Postbox"</b>
+				The "Postbox"
 				<br>
 				<br>
 				<textarea name="body" required></textarea>
