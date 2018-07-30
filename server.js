@@ -53,7 +53,7 @@ const postsPerPage = 10;
 				</div>
 			`;
 		} else {
-			return html`<center>No posts were found.<center>`;
+			return html`<center>No posts were found.</center>`;
 		}
 	};
 	const cube = await serve({
