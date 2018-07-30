@@ -11,7 +11,7 @@ const whitespace = /[\s-]+/g;
 const hyphens = /-/g;
 const formatDate = d => {
 	d = new Date(d);
-	return `${d.getMonth() + 1}-${d.getDay()}.${d.getFullYear()}`;
+	return `${d.getMonth() + 1}-${d.getDate()}.${d.getFullYear()}`;
 };
 const cleanTag = tag => tag && tag.trim().toLowerCase().replace(whitespace, "-");
 const forTags = (tag, i, tags) => tag && tags.indexOf(tag) === i;
