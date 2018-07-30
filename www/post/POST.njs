@@ -10,7 +10,7 @@ try {
 	return;
 }
 googleAuthClient.verifyIdToken({
-	idToken: this.req.body.id,
+	idToken: this.req.body.token,
 	audience: secret.google.id
 }).then(ticket => {
 	const id = ticket.getPayload().sub;
