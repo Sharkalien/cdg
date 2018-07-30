@@ -1,7 +1,7 @@
 this.value = (await load("load/head", this)).value;
 this.value += html`
 	<div class="box">
-		<b>By <a href="/author/Chase" style="color: #00ff66;">Chase</a></b> <!--Author-->
+		<b>By <a href="/tagged/Chase" style="color: #00ff66;">Chase</a></b> <!--Author-->
 		<br>
 		<br>
 		<!--Content Area!! But you already knew that. -->
@@ -21,7 +21,7 @@ this.value += html`
 		<!--End of content area. -->
 	</div>
 	<div class="box">
-		<b>By <a href="/author/Cole" style="color: #f76400;">Cole</a></b> <!--Author-->
+		<b>By <a href="/tagged/Cole" style="color: #f76400;">Cole</a></b> <!--Author-->
 		<br>
 		<br>
 		<!--Content Area!! But you already knew that. -->
