@@ -14,7 +14,7 @@ this.value += html`
 				Tags: <input name="tags"></input>
 				<br>
 				<br>
-				<button type="submit">Edit It</button> <button id="delete">Delete It</button>
+				<button type="submit">Edit It</button> <button id="delete" type="button">Delete It</button>
 			</form>
 		</center>
 	</div>
