@@ -1,4 +1,5 @@
-document.querySelector("form").addEventListener("submit", evt => {
+const form = document.querySelector("form");
+form.addEventListener("submit", evt => {
 	evt.preventDefault();
 	gapi.load("auth2", () => {
 		gapi.auth2.init({
@@ -20,7 +21,8 @@ document.querySelector("form").addEventListener("submit", evt => {
 				};
 				req.send(JSON.stringify({
 					token: user.getAuthResponse().id_token,
-					body: document.querySelector("textarea").value
+					body: form.elements.body.value,
+					tags: form.elements.tags.value
 				}));
 			});
 		});

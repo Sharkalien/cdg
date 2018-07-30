@@ -6,7 +6,10 @@ this.value += html`
 				<b>The "Postbox"</b>
 				<br>
 				<br>
-				<textarea required></textarea>
+				<textarea name="body" required></textarea>
+				<br>
+				Tags: <input name="tags"></input>
+				<br>
 				<br>
 				<button type="submit">Post It</button>
 			</form>

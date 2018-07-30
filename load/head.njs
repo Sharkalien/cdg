@@ -10,7 +10,7 @@ this.value = html`
 		<head>
 			<meta charset="UTF-8">
 			<title>COMEDY-DOT.$${this.title}</title>
-			<meta name="keywords" content="comedy, gold, sharkalien, radical dude 42, commander cello, timaeustesticle, spicer, gut bustingly, funny, comics">
+			<meta name="keywords" content="comedy, gold, sharkalien, radical dude 42, timaeustesticle, spicer, gut bustingly, funny, comics">
 			<meta name="description" content="$${this.description}">
 			<meta name="theme-color" content="#ffcf40">
 			<link rel="stylesheet" href="/css/cdg.css">
