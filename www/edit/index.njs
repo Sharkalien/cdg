@@ -15,6 +15,9 @@ this.value += html`
 				<br>
 				<br>
 				<button type="submit">Edit It</button> <button id="delete" type="button">Delete It</button>
+				<br>
+				<br>
+				<a href="/post/">The "Postbox"</a>
 			</form>
 		</center>
 	</div>

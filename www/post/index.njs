@@ -12,6 +12,9 @@ this.value += html`
 				<br>
 				<br>
 				<button type="submit">Post It</button>
+				<br>
+				<br>
+				<a href="/edit/">The "Editbox"</a>
 			</form>
 		</center>
 	</div>
