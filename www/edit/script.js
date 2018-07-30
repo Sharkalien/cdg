@@ -75,18 +75,27 @@
 	form.elements.id.addEventListener("input", inputID);
 	inputID();
 	document.querySelector("#delete").addEventListener("click", () => {
-		const req = new XMLHttpRequest();
-		req.open("DELETE", `/api/posts/${form.elements.id.value}`, true);
-		req.onreadystatechange = () => {
-			if(req.readyState === XMLHttpRequest.DONE) {
-				if(Math.floor(req.status / 100) === 2) {
-					alert("Deletion successful!");
-					location.reload();
-				} else {
-					alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);
-				}
-			}
-		};
-		req.send();
+		gapi.load("auth2", () => {
+			gapi.auth2.init().then(auth2 => {
+				auth2.signIn().then(user => {
+					const req = new XMLHttpRequest();
+					req.open("DELETE", `/api/posts/${form.elements.id.value}`, true);
+					req.setRequestHeader("Content-Type", "application/json");
+					req.onreadystatechange = () => {
+						if(req.readyState === XMLHttpRequest.DONE) {
+							if(Math.floor(req.status / 100) === 2) {
+								alert("Deletion successful!");
+								location.reload();
+							} else {
+								alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);
+							}
+						}
+					};
+					req.send(JSON.stringify({
+						token: user.getAuthResponse().id_token
+					}));
+				});
+			});
+		});
 	});
 })();
