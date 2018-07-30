@@ -12,9 +12,16 @@ try {
 googleAuthClient.verifyIdToken({
 	idToken: this.req.body.token,
 	audience: secret.google.id
-}).then(ticket => {
-	const id = ticket.getPayload().sub;
-	console.log(id);
+}).then(async ticket => {
+	const user = JSON.parse(await fs.readFile("secret/users.json"))[ticket.getPayload().sub];
+	if(user) {
+		// this.req.body.tags.split(",").map(byTag).filter(forTags)
+	} else {
+		this.value = {
+			error: "Your IP has been recorded and traced. You will not be safe."
+		};
+		this.status = 403;
+	}
 	this.done();
 }).catch(err => {
 	this.value = {

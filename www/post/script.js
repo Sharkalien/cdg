@@ -7,7 +7,8 @@ form.addEventListener("submit", evt => {
 		}).then(auth2 => {
 			auth2.signIn().then(user => {
 				const req = new XMLHttpRequest();
-				req.open("POST", "/post", true);
+				req.open("POST", "/api/posts", true);
+				req.setRequestHeader("Accept", "application/json");
 				req.setRequestHeader("Content-Type", "application/json");
 				req.onreadystatechange = () => {
 					if(req.readyState === XMLHttpRequest.DONE) {
@@ -15,7 +16,7 @@ form.addEventListener("submit", evt => {
 							alert("Success!");
 							location.href = "/";
 						} else {
-							alert(`Error ${req.status}`);
+							alert(`Error ${req.status + (req.response ? `:\n${req.response.error}` : "")}`);
 						}
 					}
 				};

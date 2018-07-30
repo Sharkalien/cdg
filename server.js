@@ -6,6 +6,8 @@ const secret = require("./secret/secret.js");
 const production = process.argv[2] === "production";
 const googleAuthClient = new OAuth2Client(secret.google.id);
 const pageNameTest = /\/(.*?)\/?$/;
+const byTag = tag => tag.trim().toLowerCase();
+const forTags = (tag, i, tags) => tags.indexOf(tag) === i;
 (async () => {
 	const myEval = v => eval(v);
 	require("replthis")(myEval);
