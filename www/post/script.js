@@ -7,6 +7,7 @@ document.querySelector("form").addEventListener("submit", evt => {
 			auth2.signIn().then(user => {
 				const req = new XMLHttpRequest();
 				req.open("POST", "/post", true);
+				req.setRequestHeader("Content-Type", "application/json");
 				req.onreadystatechange = () => {
 					if(req.readyState === XMLHttpRequest.DONE) {
 						if(Math.floor(req.status / 100) === 2) {
@@ -17,7 +18,10 @@ document.querySelector("form").addEventListener("submit", evt => {
 						}
 					}
 				};
-				req.send(user.getAuthResponse().id_token);
+				req.send(JSON.stringify({
+					token: user.getAuthResponse().id_token,
+					body: document.querySelector("textarea").value
+				}));
 			});
 		});
 	});
