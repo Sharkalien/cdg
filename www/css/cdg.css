@@ -24,8 +24,8 @@ body {
 header {
 	padding-top: 15px;
 }
-header img:hover {
-	filter: brightness(4);
+nav img:hover {
+	filter: brightness(2);
 }
 #banner {
 	display: block;
