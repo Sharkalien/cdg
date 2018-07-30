@@ -4,7 +4,7 @@ if(posts[id]) {
 	this.value = {
 		...posts[id]
 	};
-	this.value.user = users[this.value.user].name;
+	this.value.user = users[this.value.user];
 } else {
 	this.status = 404;
 }

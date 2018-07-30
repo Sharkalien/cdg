@@ -58,7 +58,7 @@
 				if(Math.floor(req.status / 100) === 2) {
 					if(id === form.elements.id.value) {
 						const post = JSON.parse(req.responseText);
-						author.textContent = post.user;
+						author.textContent = post.user.name;
 						form.elements.body.value = post.body.replace(brTags, "\n");
 						form.elements.tags.value = post.tags.join(", ");
 						inputBody();
