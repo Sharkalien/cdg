@@ -1,6 +1,7 @@
 if(!this.title) {
 	this.title = this.req.path.replace(pageNameTest, "$1").toUpperCase() || "GOLD";
 }
+this.title = `COMEDY-DOT.${this.title}`;
 if(!this.description) {
 	this.description = "COMEDY-DOT GOLD IS HERE FOR ALL YOUR FUNNY BONE NEEDS";
 }
@@ -9,7 +10,7 @@ this.value = html`
 	<html>
 		<head>
 			<meta charset="UTF-8">
-			<title>COMEDY-DOT.$${this.title}</title>
+			<title>$${this.title}</title>
 			<meta name="keywords" content="comedy, gold, sharkalien, radical dude 42, timaeustesticle, spicer, gut bustingly, funny, comics">
 			<meta name="description" content="$${this.description}">
 			<meta name="theme-color" content="#ffcf40">
