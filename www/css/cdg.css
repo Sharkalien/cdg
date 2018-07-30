@@ -23,6 +23,9 @@ body {
 header {
 	padding-top: 15px;
 }
+header img:hover {
+	filter: brightness(4);
+}
 #banner {
 	display: block;
 	margin: 0 auto;
