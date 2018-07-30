@@ -15,7 +15,7 @@ form.addEventListener("submit", evt => {
 							alert("Success!");
 							location.href = "/";
 						} else {
-							alert(`Error ${req.status + (req.responseText ? `:${req.responseText}` : "")}`);
+							alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);
 						}
 					}
 				};
