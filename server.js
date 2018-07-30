@@ -17,6 +17,39 @@ const cleanTag = tag => tag && tag.trim().toLowerCase().replace(whitespace, "-")
 const forTags = (tag, i, tags) => tag && tags.indexOf(tag) === i;
 const byTagHTML = tag => html`<a class="tag" href="/tagged/$${tag}">$${tag.replace(hyphens, " ")}</a>`;
 const postsPerPage = 10;
+const verify = context => new Promise(resolve => {
+	try {
+		context.req.body = JSON.parse(context.req.body);
+	} catch(err) {
+		context.status = 400;
+		context.value = err.message;
+		context.done();
+		return;
+	}
+	googleAuthClient.verifyIdToken({
+		idToken: context.req.body.token,
+		audience: secret.google.id
+	}).then(async ticket => {
+		const id = ticket.getPayload().sub;
+		const user = users[id];
+		if(user) {
+			resolve(id);
+		} else {
+			context.value = "Your IP has been recorded and traced. You will not be safe.";
+			context.status = 403;
+		}
+		context.done();
+	}).catch(err => {
+		context.value = err.message;
+		context.status = 422;
+		context.done();
+	});
+});
+const save = async () => {
+	await fs.writeFile("secret/_posts.json", JSON.stringify(posts));
+	await fs.unlink("secret/posts.json");
+	await fs.rename("secret/_posts.json", "secret/posts.json");
+};
 (async () => {
 	const myEval = v => eval(v);
 	require("replthis")(myEval);
