@@ -36,7 +36,7 @@ const postsPerPage = 10;
 				value += html`
 					<div id="post_${i + 1}" class="post box">
 						<div class="header">
-							By <a class="author" href="/tagged/$${users[targetPosts[i].user].name}" style="color: $${users[targetPosts[i].user].color};">$${users[targetPosts[i].user].name}</a>
+							By <a class="author" href="/tagged/$${users[targetPosts[i].user].name}" style="$${users[targetPosts[i].user].style}">$${users[targetPosts[i].user].name}</a>
 						</div>
 						<div class="body">${targetPosts[i].body}</div>
 						<div class="footer">
