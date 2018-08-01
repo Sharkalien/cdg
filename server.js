@@ -1,3 +1,4 @@
+"use strict";
 console.log("< Server >");
 const fs = require("fs-extra");
 const {serve, html} = require("servecube");
@@ -25,7 +26,7 @@ const postsPerPage = 10;
 	const users = JSON.parse(await fs.readFile("secret/users.json"));
 	const posts = JSON.parse(await fs.readFile("secret/posts.json"));
 	const renderPost = (id, i) => html`
-		<div id="post_${id}" class="post box user_$${users[posts[i].user].name} $${posts[i].tags.map(byTagClass).join(" ")}">
+		<div id="post_${id}" class="post box user_$${users[posts[i].user].name + (posts[i].tags.length ? ` ${posts[i].tags.map(byTagClass).join(" ")}` : "")}">
 			<div class="header">
 				By <a class="author" href="/tagged/$${users[posts[i].user].name}" style="$${users[posts[i].user].style}">$${users[posts[i].user].name}</a>
 			</div>
@@ -53,18 +54,18 @@ const postsPerPage = 10;
 			return prepend + (posts[i] ? renderPost(id, i) : noPosts);
 		} else {
 			let targetPosts = [...posts];
-			targetPosts = reverse ? targetPosts : targetPosts.reverse();
+			targetPosts = reverse ? targetPosts.reverse() : targetPosts;
 			if(tag) {
 				targetPosts = targetPosts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag));
 			}
 			if(targetPosts.length) {
 				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
-				page = Math.min(maxPage, Math.ceil(page));
+				page = Math.min(maxPage, Math.ceil(page)); // TODO: simplify
 				let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
 				const end = Math.min(targetPosts.length + 1, start + postsPerPage);
 				start = Math.max(0, start);
-				for(const post of targetPosts.slice(start, end)) {
+				for(const post of targetPosts.slice(start, end).reverse()) {
 					const i = posts.indexOf(post);
 					value += renderPost(i + 1, i);
 				}
@@ -76,7 +77,7 @@ const postsPerPage = 10;
 				return prepend + html`
 					<br>
 					<div class="right">
-						<a href="${(reverse ? urlStartForward : urlStartReverse) + page}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
+						<a href="${(reverse ? urlStartForward : urlStartReverse) + (maxPage - page + 1)}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
 					</div>
 					${value}
 					<div id="buttons">
