@@ -41,7 +41,7 @@ const postsPerPage = 10;
 		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>
 	`;
 	const renderPosts = (page, tag, reverse) => {
-		let value = tag ? html`
+		const prepend = tag ? html`
 			<br>
 			<i>tagged: $${tag}</i>
 			<br>
@@ -50,11 +50,12 @@ const postsPerPage = 10;
 		if(postTagTest.test(tag)) {
 			const id = tag.replace(postTagTest, "$1");
 			const i = id - 1;
-			return value + (posts[i] ? renderPost(id, i) : noPosts);
+			return prepend + (posts[i] ? renderPost(id, i) : noPosts);
 		} else {
 			let targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : [...posts];
 			targetPosts = reverse ? targetPosts : targetPosts.reverse(); // irony
 			if(targetPosts.length) {
+				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
 				page = Math.min(maxPage, Math.ceil(page));
 				let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
@@ -67,17 +68,18 @@ const postsPerPage = 10;
 				const urlStart = tag ? (reverse ? "/reverse" : "") + html`/tagged/$${tag}/` : (reverse ? "/reverse/" : "/page/");
 				const showPrevButton = page > 1;
 				const showNextButton = page < maxPage;
-				return value + html`
+				return prepend + html`
 					<br>
 					<div class="right">
 						<a href="${(reverse ? urlStart.slice(8) : `/reverse${urlStart}`) + page}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
 					</div>
+					${value}
 					<div id="buttons">
 						${(showPrevButton ? html`<a href="${urlStart}1"><img src="/img/arrow_first.png"></a>&nbsp;<a href="${urlStart + (page - 1)}"><img src="/img/arrow_prev.png"></a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;<img src="/img/arrow_dot.png">&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}"><img src="/img/arrow_next.png"></a>&nbsp;<a href="${urlStart + maxPage}"><img src="/img/arrow_last.png"></a>` : "")}
 					</div>
 				`;
 			} else {
-				return value + noPosts;
+				return prepend + noPosts;
 			}
 		}
 	};
