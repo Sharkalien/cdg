@@ -34,7 +34,7 @@ const postsPerPage = 10;
 			start = Math.max(0, start);
 			for(let i = end; i >= start; i--) {
 				value += html`
-					<div id="post_${i + 1}" class="post box">
+					<div id="post_${posts.indexOf(targetPosts[i]) + 1}" class="post box post_$${users[targetPosts[i].user].name}">
 						<div class="header">
 							By <a class="author" href="/tagged/$${users[targetPosts[i].user].name}" style="$${users[targetPosts[i].user].style}">$${users[targetPosts[i].user].name}</a>
 						</div>
