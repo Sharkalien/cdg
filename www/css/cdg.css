@@ -74,6 +74,9 @@ center {
 .post .body {
 	margin: 1em 0;
 }
+.post .date {
+	color: initial;
+}
 #buttons {
 	text-align: center;
 }
