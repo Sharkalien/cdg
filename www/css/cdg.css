@@ -63,6 +63,11 @@ textarea {
 img {
 	max-width: 100%;
 }
+.right {
+	display: inline-block;
+	width: 100%;
+	text-align: right;
+}
 center {
 	text-align: center;
 }

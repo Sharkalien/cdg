@@ -36,16 +36,33 @@ const postsPerPage = 10;
 			</div>
 		</div>
 	`;
-	const noPosts = html`<br><center>THE COMEDY GOLD MINE HAS RUN DRY.</center>`;
+	const noPosts = html`
+		<br>
+		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>
+	`;
+	const prepend = reverse => html`
+		<br>
+		<div class="right">
+			<a href=""></a>
+		</div>
+	`;
 	const renderPosts = (page, tag, reverse) => {
-		let value = tag ? html`<br><i>tagged: $${tag}</i><br>` : "";
+		let value = tag ? html`
+			<br>
+			<i>tagged: $${tag}</i>
+			<br>
+		` : "";
 		tag = cleanTag(tag);
 		if(postTagTest.test(tag)) {
 			const id = tag.replace(postTagTest, "$1");
 			const i = id - 1;
-			return value + (posts[i] ? renderPost(id, i) : noPosts);
+			if(posts[i]) {
+				return prepend + value + (posts[i] ? renderPost(id, i) : noPosts);
+			} else {
+				return value + noPosts;
+			}
 		} else {
-			let targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : posts;
+			let targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : [...posts];
 			targetPosts = reverse ? targetPosts : targetPosts.reverse(); // irony
 			if(targetPosts.length) {
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
@@ -57,10 +74,15 @@ const postsPerPage = 10;
 					const i = posts.indexOf(post);
 					value += renderPost(i + 1, i);
 				}
-				const urlStart = tag ? html`/tagged/$${tag}/` : "/page/";
+				const urlStart = (reverse ? "/reverse" : "") + (tag ? html`/tagged/$${tag}/` : "/page/");
 				const showPrevButton = page > 1;
 				const showNextButton = page < maxPage;
-				return value + html`
+				return html`
+					<br>
+					<div class="right">
+						<a href="${(reverse ? urlStart.slice(8) : `/reverse${urlStart}`) + page}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
+					</div>
+					${value}
 					<div id="buttons">
 						${(showPrevButton ? html`<a href="${urlStart}1"><img src="/img/arrow_first.png"></a>&nbsp;<a href="${urlStart + (page - 1)}"><img src="/img/arrow_prev.png"></a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;<img src="/img/arrow_dot.png">&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}"><img src="/img/arrow_next.png"></a>&nbsp;<a href="${urlStart + maxPage}"><img src="/img/arrow_last.png"></a>` : "")}
 					</div>
