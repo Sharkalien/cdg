@@ -9,7 +9,7 @@ const pageNameTest = /\/(.*?)\/?$/;
 const brs = /\n/g;
 const whitespace = /[\s-]+/g;
 const hyphens = /-/g;
-const postTagTest = /^post-(\d)+$/;
+const postTagTest = /^post-(\d+)$/;
 const formatDate = d => {
 	d = new Date(d);
 	return `${d.getMonth() + 1}-${d.getDate()}.${d.getFullYear()}`;
@@ -65,13 +65,15 @@ const postsPerPage = 10;
 					const i = posts.indexOf(post);
 					value += renderPost(i + 1, i);
 				}
-				const urlStart = tag ? (reverse ? "/reverse" : "") + html`/tagged/$${tag}/` : (reverse ? "/reverse/" : "/page/");
+				const urlStartForward = tag ? html`/tagged/$${tag}/` : "/page/";
+				const urlStartReverse = tag ? html`/reverse/tagged/$${tag}/` : "/reverse/";
+				const urlStart = reverse ? urlStartReverse : urlStartForward;
 				const showPrevButton = page > 1;
 				const showNextButton = page < maxPage;
 				return prepend + html`
 					<br>
 					<div class="right">
-						<a href="${(reverse ? urlStart.slice(8) : `/reverse${urlStart}`) + page}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
+						<a href="${(reverse ? urlStartForward : urlStartReverse) + page}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
 					</div>
 					${value}
 					<div id="buttons">
