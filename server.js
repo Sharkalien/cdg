@@ -55,7 +55,7 @@ const postsPerPage = 10;
 				start = Math.max(0, start);
 				for(const post of targetPosts.slice(start, end)) {
 					const i = posts.indexOf(post);
-					value += renderPost(i + 1, index);
+					value += renderPost(i + 1, i);
 				}
 				const urlStart = tag ? html`/tagged/$${tag}/` : "/page/";
 				const showPrevButton = page > 1;
