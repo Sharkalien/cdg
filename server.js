@@ -52,8 +52,11 @@ const postsPerPage = 10;
 			const i = id - 1;
 			return prepend + (posts[i] ? renderPost(id, i) : noPosts);
 		} else {
-			let targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : [...posts];
-			targetPosts = reverse ? targetPosts : targetPosts.reverse(); // irony
+			let targetPosts = [...posts];
+			targetPosts = reverse ? targetPosts : targetPosts.reverse();
+			if(tag) {
+				targetPosts = targetPosts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag));
+			}
 			if(targetPosts.length) {
 				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
