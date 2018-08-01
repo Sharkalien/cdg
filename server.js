@@ -37,7 +37,7 @@ const postsPerPage = 10;
 		</div>
 	`;
 	const noPosts = html`<br><center>THE COMEDY GOLD MINE HAS RUN DRY.</center>`;
-	const renderPosts = (page, tag) => {
+	const renderPosts = (page, tag, reverse) => {
 		let value = tag ? html`<br><i>tagged: $${tag}</i><br>` : "";
 		tag = cleanTag(tag);
 		if(postTagTest.test(tag)) {
@@ -45,16 +45,17 @@ const postsPerPage = 10;
 			const i = id - 1;
 			return value + (posts[i] ? renderPost(id, i) : noPosts);
 		} else {
-			const targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : posts;
+			let targetPosts = tag ? posts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag)) : posts;
+			targetPosts = reverse ? targetPosts : targetPosts.reverse(); // irony
 			if(targetPosts.length) {
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
 				page = Math.min(maxPage, Math.ceil(page));
 				let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
-				const end = Math.min(targetPosts.length, start + postsPerPage - 1);
+				const end = Math.min(targetPosts.length + 1, start + postsPerPage);
 				start = Math.max(0, start);
-				for(let i = end; i >= start; i--) {
-					const index = posts.indexOf(targetPosts[i]);
-					value += renderPost(index + 1, index);
+				for(const post of targetPosts.slice(start, end)) {
+					const i = posts.indexOf(post);
+					value += renderPost(i + 1, index);
 				}
 				const urlStart = tag ? html`/tagged/$${tag}/` : "/page/";
 				const showPrevButton = page > 1;
