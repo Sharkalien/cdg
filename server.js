@@ -127,7 +127,7 @@ const postsPerPage = 10;
 		domain: production ? "comedy-dot.gold" : "localhost:8080",
 		errorDir: "error",
 		loadDirs: ["load"],
-		httpPort: 8080,
+		httpPort: 8180,
 		githubPayloadURL: "/githubwebhook",
 		githubSecret: secret.github.secret,
 		githubToken: secret.github.token
