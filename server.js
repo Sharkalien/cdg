@@ -77,7 +77,7 @@ const postsPerPage = 10;
 				return prepend + html`
 					<br>
 					<div class="right">
-						<a href="${(reverse ? urlStartForward : urlStartReverse) + (maxPage - page + 1)}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
+						<a href="${(reverse ? urlStartForward : urlStartReverse) + page}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
 					</div>
 					${value}
 					<div id="buttons">
