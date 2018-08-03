@@ -131,6 +131,7 @@ const postsPerPage = 10;
 		subdomains: {
 			api: "api/"
 		},
+		githubSubdomain: "api",
 		githubPayloadURL: "/githubwebhook",
 		githubSecret: secret.github.secret,
 		githubToken: secret.github.token
