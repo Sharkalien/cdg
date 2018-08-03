@@ -40,7 +40,8 @@ nav img:hover, #buttons a:hover {
 }
 nav {
 	background-image: url(/img/goldplate.png);
-	width: 344px;
+	background-position: center;
+	background-repeat: no-repeat;
 	height: 84px;
 	margin: auto;
 	text-align: center;
