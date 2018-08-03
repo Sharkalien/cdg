@@ -15,7 +15,7 @@
 	"bugs": {
 		"url": "https://github.com/Sharkalien/cdg/issues"
 	},
-	"homepage": "http://comedy-dot.gold/",
+	"homepage": "https://comedy-dot.gold/",
 	"dependencies": {
 		"fs-extra": "^5.0.0",
 		"google-auth-library": "^1.6.1",
