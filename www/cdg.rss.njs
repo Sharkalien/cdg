@@ -8,7 +8,8 @@ this.value = html`
 		<lastBuildDate>${date("r", new Date(posts[posts.length - 1].date))}</lastBuildDate>
 		<pubDate>Sat, 07 Apr 2018 19:42:21 -0400</pubDate>
 		<ttl>60</ttl>`;
-for(let i = Math.min(19, posts.length - 1); i >= 0; i--) {
+const end = Math.max(0, posts.length - 20);
+for(let i = posts.length - 1; i >= end; i--) {
 	const id = i + 1;
 	this.value += html`
 		<item>
