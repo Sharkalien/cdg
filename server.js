@@ -124,10 +124,13 @@ const postsPerPage = 10;
 	};
 	const cube = await serve({
 		eval: myEval,
-		domain: production ? "comedy-dot.gold" : "localhost:8080",
+		domain: production ? "comedy-dot.gold" : "localhost:8180",
 		errorDir: "error",
 		loadDirs: ["load"],
 		httpPort: 8180,
+		subdomains: {
+			api: "api/"
+		},
 		githubPayloadURL: "/githubwebhook",
 		githubSecret: secret.github.secret,
 		githubToken: secret.github.token

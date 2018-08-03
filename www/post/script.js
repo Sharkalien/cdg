@@ -11,7 +11,7 @@
 			gapi.auth2.init().then(auth2 => {
 				auth2.signIn().then(user => {
 					const req = new XMLHttpRequest();
-					req.open("POST", "/api/posts", true);
+					req.open("POST", `//api.${location.host}/posts`, true);
 					req.setRequestHeader("Content-Type", "application/json");
 					req.onreadystatechange = () => {
 						if(req.readyState === XMLHttpRequest.DONE) {

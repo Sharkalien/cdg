@@ -16,7 +16,7 @@
 			gapi.auth2.init().then(auth2 => {
 				auth2.signIn().then(user => {
 					const req = new XMLHttpRequest();
-					req.open("PUT", `/api/posts/${form.elements.id.value}`, true);
+					req.open("PUT", `//api.${location.host}/posts/${form.elements.id.value}`, true);
 					req.setRequestHeader("Content-Type", "application/json");
 					req.onreadystatechange = () => {
 						if(req.readyState === XMLHttpRequest.DONE) {
@@ -52,7 +52,7 @@
 	let id = 0;
 	const inputID = () => {
 		const req = new XMLHttpRequest();
-		req.open("GET", `/api/posts/${id = form.elements.id.value}`, true);
+		req.open("GET", `//api.${location.host}/posts/${id = form.elements.id.value}`, true);
 		req.onreadystatechange = () => {
 			if(req.readyState === XMLHttpRequest.DONE) {
 				if(Math.floor(req.status / 100) === 2) {
@@ -80,7 +80,7 @@
 				gapi.auth2.init().then(auth2 => {
 					auth2.signIn().then(user => {
 						const req = new XMLHttpRequest();
-						req.open("DELETE", `/api/posts/${form.elements.id.value}`, true);
+						req.open("DELETE", `//api.${location.host}/posts/${form.elements.id.value}`, true);
 						req.setRequestHeader("Content-Type", "application/json");
 						req.onreadystatechange = () => {
 							if(req.readyState === XMLHttpRequest.DONE) {
