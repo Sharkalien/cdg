@@ -26,18 +26,21 @@ const postsPerPage = 10;
 	require("replthis")(myEval);
 	const users = JSON.parse(await fs.readFile("secret/users.json"));
 	const posts = JSON.parse(await fs.readFile("secret/posts.json"));
-	const renderPost = (id, i) => html`
-		<div id="post_${id}" class="post box user_$${users[posts[i].user].name + (posts[i].tags.length ? ` ${posts[i].tags.map(byTagClass).join(" ")}` : "")}">
-			<div class="header">
-				By <a class="author" href="/tagged/$${users[posts[i].user].name}" style="$${users[posts[i].user].style}">$${users[posts[i].user].name}</a>
+	const renderPost = (id, i, fullURLs) => {
+		const urlStart = fullURLs ? "https://comedy-dot.gold" : "";
+		return html`
+			<div id="post_${id}" class="post box user_$${users[posts[i].user].name + (posts[i].tags.length ? ` ${posts[i].tags.map(byTagClass).join(" ")}` : "")}">
+				<div class="header">
+					By <a class="author" href="${urlStart}/tagged/$${users[posts[i].user].name}" style="$${users[posts[i].user].style}">$${users[posts[i].user].name}</a>
+				</div>
+				<div class="body">${posts[i].body}</div>
+				<div class="footer">
+					<a class="date" href="${urlStart}/tagged/post-${id}">${formatDate(posts[i].date)}</a>
+					<span class="tags">${posts[i].tags.map(byTagHTML).join(", ")}</span>
+				</div>
 			</div>
-			<div class="body">${posts[i].body}</div>
-			<div class="footer">
-				<a class="date" href="/tagged/post-${id}">${formatDate(posts[i].date)}</a>
-				<span class="tags">${posts[i].tags.map(byTagHTML).join(", ")}</span>
-			</div>
-		</div>
-	`;
+		`;
+	};
 	const noPosts = html`
 		<br>
 		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>

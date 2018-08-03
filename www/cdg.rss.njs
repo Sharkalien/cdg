@@ -15,7 +15,7 @@ for(let i = Math.min(19, posts.length - 1); i >= 0; i--) {
 			<guid isPermaLink="false">post-${id}</guid>
 			<pubDate>${date("r", new Date(posts[i].date))}</pubDate>
 			<title>Post #${id}</title>
-			<description>$${renderPost(id, i)}</description>
+			<description>$${renderPost(id, i, true)}</description>
 			<link>https://comedy-dot.gold/tagged/post-${id}</link>
 		</item>`;
 }
