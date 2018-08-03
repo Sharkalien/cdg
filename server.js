@@ -18,7 +18,6 @@ const formatDate = d => {
 };
 const cleanTag = tag => tag && tag.trim().toLowerCase().replace(whitespace, "-");
 const forTags = (tag, i, tags) => tag && tags.indexOf(tag) === i;
-const byTagHTML = tag => html`<a class="tag" href="/tagged/$${tag}">$${tag.replace(hyphens, " ")}</a>`;
 const byTagClass = tag => `tag_${tag}`;
 const postsPerPage = 10;
 (async () => {
@@ -36,7 +35,7 @@ const postsPerPage = 10;
 				<div class="body">${posts[i].body}</div>
 				<div class="footer">
 					<a class="date" href="${urlStart}/tagged/post-${id}">${formatDate(posts[i].date)}</a>
-					<span class="tags">${posts[i].tags.map(byTagHTML).join(", ")}</span>
+					<span class="tags">${posts[i].tags.map(tag => html`<a class="tag" href="${urlStart}/tagged/$${tag}">$${tag.replace(hyphens, " ")}</a>`).join(", ")}</span>
 				</div>
 			</div>
 		`;
