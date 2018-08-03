@@ -3,7 +3,7 @@ if(!this.title) {
 }
 this.title = `COMEDY-DOT.${this.title}`;
 if(!this.description) {
-	this.description = "COMEDY-DOT GOLD IS HERE FOR ALL YOUR FUNNY BONE NEEDS";
+	this.description = "COMEDY-DOT.GOLD IS HERE FOR ALL YOUR FUNNY BONE NEEDS";
 }
 this.value = html`
 	<!DOCTYPE html>

@@ -1,4 +1,4 @@
-this.description = "COMEDY-DOT GOLD IS HERE WITH COMIX HOT OFF THE DIGITAL PRESS";
+this.description = "COMEDY-DOT.GOLD IS HERE WITH COMIX HOT OFF THE DIGITAL PRESS";
 this.value = (await load("load/head", this)).value;
 this.value += html`
 	<div class="box">
