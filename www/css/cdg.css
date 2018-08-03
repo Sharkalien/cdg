@@ -31,18 +31,11 @@ nav img:hover, #buttons a:hover {
 	display: block;
 	margin: 0 auto;
 }
-.bars {
-	background-image: url(/img/bars.gif);
-	height: 167px;
-	width: 688px;
-	display: block;
-	margin: auto;
-}
 nav {
-	background-image: url(/img/goldplate.png);
-	background-position: center;
+	background-image: url(/img/goldplatebars.png);
+	background-position: center top;
 	background-repeat: no-repeat;
-	height: 84px;
+	height: 167px;
 	margin: auto;
 	text-align: center;
 	padding-top: 15px;
