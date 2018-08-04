@@ -17,7 +17,7 @@ this.value = html`
 			<meta property="og:type" content="website">
 			<meta property="og:url" content="https://comedy-dot.gold/">
 			<meta property="og:site_name" content="COMEDY-DOT.GOLD">
-			<meta property="og:image" content="https://comedy-dot.gold/img/favicon.gif">
+			<meta property="og:image" content="https://comedy-dot.gold/img/embed.png">
 			<meta property="og:title" content="$${this.title}">
 			<meta property="og:description" content="$${this.description}">
 			<meta name="google-signin-client_id" content="${secret.google.id}">
