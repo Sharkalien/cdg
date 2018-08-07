@@ -44,7 +44,7 @@ const postsPerPage = 10;
 		<br>
 		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>
 	`;
-	const renderPosts = (page, tag, reverse) => {
+	const renderPosts = (page, tag, reverse, noButtons) => {
 		const prepend = tag ? html`
 			<br>
 			<i>tagged: $${tag}</i>
@@ -64,7 +64,7 @@ const postsPerPage = 10;
 			if(targetPosts.length) {
 				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
-				page = Math.min(maxPage, Math.ceil(page)); // TODO: simplify
+				page = Math.min(maxPage, Math.ceil(page));
 				let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
 				const end = Math.min(targetPosts.length + 1, start + postsPerPage);
 				start = Math.max(0, start);
@@ -82,11 +82,11 @@ const postsPerPage = 10;
 					<div class="right">
 						<a href="${(reverse ? urlStartForward : urlStartReverse) + maxPage}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
 					</div>
-					${value}
+				` + value + (noButtons ? "" : html`
 					<div id="buttons">
 						${(showPrevButton ? html`<a href="${urlStart}1"><img src="/img/arrow_first.png"></a>&nbsp;<a href="${urlStart + (page - 1)}"><img src="/img/arrow_prev.png"></a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;<img src="/img/arrow_dot.png">&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}"><img src="/img/arrow_next.png"></a>&nbsp;<a href="${urlStart + maxPage}"><img src="/img/arrow_last.png"></a>` : "")}
 					</div>
-				`;
+				`);
 			} else {
 				return prepend + noPosts;
 			}
