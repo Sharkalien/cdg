@@ -11,7 +11,6 @@ const pageNameTest = /\/(.*?)\/?$/;
 const brs = /\n/g;
 const whitespace = /[\s-]+/g;
 const hyphens = /-/g;
-const postTagTest = /^post-(\d+)$/;
 const formatDate = d => {
 	d = new Date(d);
 	return `${d.getMonth() + 1}-${d.getDate()}.${d.getFullYear()}`;
@@ -19,7 +18,7 @@ const formatDate = d => {
 const cleanTag = tag => tag && tag.trim().toLowerCase().replace(whitespace, "-");
 const forTags = (tag, i, tags) => tag && tags.indexOf(tag) === i;
 const byTagClass = tag => `tag_${tag}`;
-const postsPerPage = 10;
+const defaultPostsPerPage = 10;
 (async () => {
 	const myEval = v => eval(v);
 	require("replthis")(myEval);
@@ -30,11 +29,11 @@ const postsPerPage = 10;
 		return html`
 			<div id="post_${id}" class="post box user_$${users[posts[i].user].name + (posts[i].tags.length ? ` ${posts[i].tags.map(byTagClass).join(" ")}` : "")}">
 				<div class="header">
-					By <a class="author" href="${urlStart}/tagged/$${users[posts[i].user].name}" style="$${users[posts[i].user].style}">$${users[posts[i].user].name}</a>
+					By <a class="author" href="${urlStart}/tagged/$${cleanTag(users[posts[i].user].name)}" style="$${users[posts[i].user].style}">$${users[posts[i].user].name}</a>
 				</div>
 				<div class="body">${posts[i].body}</div>
 				<div class="footer">
-					<a class="date" href="${urlStart}/tagged/post-${id}">${formatDate(posts[i].date)}</a>
+					<a class="date" href="${urlStart}/single/${id}">${formatDate(posts[i].date)}</a>
 					<span class="tags">${posts[i].tags.map(tag => html`<a class="tag" href="${urlStart}/tagged/$${tag}">$${tag.replace(hyphens, " ")}</a>`).join(", ")}</span>
 				</div>
 			</div>
@@ -44,24 +43,37 @@ const postsPerPage = 10;
 		<br>
 		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>
 	`;
-	const renderPosts = (page, tag, reverse, noButtons) => {
+	const renderPosts = (page, tag, reverse, postsPerPage) => {
+		if(!postsPerPage) {
+			postsPerPage = defaultPostsPerPage;
+		}
+		page = parseInt(page);
 		const prepend = tag ? html`
 			<br>
 			<i>tagged: $${tag}</i>
 			<br>
 		` : "";
 		tag = cleanTag(tag);
-		if(postTagTest.test(tag)) {
-			const id = tag.replace(postTagTest, "$1");
-			const i = id - 1;
-			return prepend + (posts[i] ? renderPost(id, i) : noPosts);
-		} else {
-			let targetPosts = [...posts];
-			targetPosts = reverse ? targetPosts.reverse() : targetPosts;
-			if(tag) {
-				targetPosts = targetPosts.filter(post => cleanTag(users[post.user].name) === tag || post.tags.includes(tag));
-			}
-			if(targetPosts.length) {
+		let targetPosts = [...posts];
+		if(reverse) {
+			targetPosts = targetPosts.reverse();
+		}
+		if(tag) {
+			targetPosts = targetPosts.filter(post => post.tags.includes(tag) || cleanTag(users[post.user].name) === tag);
+		}
+		if(targetPosts.length) {
+			if(postsPerPage === 1) {
+				const i = posts.indexOf(targetPosts[page - 1]) || targetPosts.length - 1;
+				const id = i + 1;
+				const urlStart = tag ? html`/single/tagged/$${tag}/` : "/single/";
+				const showPrevButton = page > 1;
+				const showNextButton = page < targetPosts.length;
+				return prepend + renderPost(id, i) + html`
+					<div id="buttons">
+						${(showPrevButton ? html`<a href="${urlStart}1"><img src="/img/arrow_first.png"></a>&nbsp;<a href="${urlStart + (page - 1)}"><img src="/img/arrow_prev.png"></a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;<img src="/img/arrow_dot.png">&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}"><img src="/img/arrow_next.png"></a>&nbsp;<a href="${urlStart + targetPosts.length}"><img src="/img/arrow_last.png"></a>` : "")}
+					</div>
+				`;
+			} else {
 				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
 				page = Math.min(maxPage, Math.ceil(page));
@@ -81,15 +93,17 @@ const postsPerPage = 10;
 					<br>
 					<div class="right">
 						<a href="${(reverse ? urlStartForward : urlStartReverse) + maxPage}">${reverse ? "newest to oldest" : "oldest to newest"}</a>
+						&bull;
+						<a href="/single$${tag ? `/tagged/${tag}` : ""}/${targetPosts.length}">single posts</a>
 					</div>
-				` + value + (noButtons ? "" : html`
+					${value}
 					<div id="buttons">
 						${(showPrevButton ? html`<a href="${urlStart}1"><img src="/img/arrow_first.png"></a>&nbsp;<a href="${urlStart + (page - 1)}"><img src="/img/arrow_prev.png"></a>` : "") + (showPrevButton && showNextButton ? html`&nbsp;<img src="/img/arrow_dot.png">&nbsp;` : "") + (showNextButton ? html`<a href="${urlStart + (page + 1)}"><img src="/img/arrow_next.png"></a>&nbsp;<a href="${urlStart + maxPage}"><img src="/img/arrow_last.png"></a>` : "")}
 					</div>
-				`);
-			} else {
-				return prepend + noPosts;
+				`;
 			}
+		} else {
+			return prepend + noPosts;
 		}
 	};
 	const verify = context => new Promise(resolve => {

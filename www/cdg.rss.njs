@@ -17,7 +17,7 @@ for(let i = posts.length - 1; i >= end; i--) {
 			<pubDate>${date("r", new Date(posts[i].date))}</pubDate>
 			<title>Post #${id}</title>
 			<description>$${renderPost(id, i, true)}</description>
-			<link>https://comedy-dot.gold/tagged/post-${id}</link>
+			<link>https://comedy-dot.gold/single/${id}</link>
 		</item>`;
 }
 this.value += html`
