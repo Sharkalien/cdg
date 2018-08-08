@@ -47,7 +47,6 @@ const defaultPostsPerPage = 10;
 		if(!postsPerPage) {
 			postsPerPage = defaultPostsPerPage;
 		}
-		page = parseInt(page);
 		const prepend = tag ? html`
 			<br>
 			<i>tagged: $${tag}</i>
@@ -63,6 +62,7 @@ const defaultPostsPerPage = 10;
 		}
 		if(targetPosts.length) {
 			if(postsPerPage === 1) {
+				page = parseInt(page);
 				const i = posts.indexOf(targetPosts[page - 1]) || targetPosts.length - 1;
 				const id = i + 1;
 				const urlStart = tag ? html`/single/tagged/$${tag}/` : "/single/";
