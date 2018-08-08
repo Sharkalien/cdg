@@ -62,8 +62,11 @@ const defaultPostsPerPage = 10;
 		}
 		if(targetPosts.length) {
 			if(postsPerPage === 1) {
-				page = parseInt(page);
-				const i = posts.indexOf(targetPosts[page - 1]) || targetPosts.length - 1;
+				page = Math.min(targetPosts.length, Math.ceil(page));
+				const i = posts.indexOf(targetPosts[page - 1]);
+				if(i === -1) {
+					i = targetPosts.length - 1;
+				}
 				const id = i + 1;
 				const urlStart = tag ? html`/single/tagged/$${tag}/` : "/single/";
 				const showPrevButton = page > 1;
