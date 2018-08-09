@@ -27,7 +27,7 @@ const defaultPostsPerPage = 10;
 	const renderPost = (id, i, fullURLs) => {
 		const urlStart = fullURLs ? "https://comedy-dot.gold" : "";
 		return html`
-			<div id="post_${id}" class="post box user_$${users[posts[i].user].name + (posts[i].tags.length ? ` ${posts[i].tags.map(byTagClass).join(" ")}` : "")}">
+			<div id="post_${id}" class="post box user_$${cleanTag(users[posts[i].user].name) + (posts[i].tags.length ? ` ${posts[i].tags.map(byTagClass).join(" ")}` : "")}">
 				<div class="header">
 					By <a class="author" href="${urlStart}/tagged/$${cleanTag(users[posts[i].user].name)}" style="$${users[posts[i].user].style}">$${users[posts[i].user].name}</a>
 				</div>
