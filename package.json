@@ -10,7 +10,6 @@
 		"type": "git",
 		"url": "git+https://github.com/Sharkalien/cdg.git"
 	},
-	"author": "Sharkalien",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/Sharkalien/cdg/issues"
