@@ -31,6 +31,11 @@ this.value += html`
 			<img src="/img/about_spicer.png" width="150" height="150" style="margin-right: 1em;">
 			<div style="flex-grow: 1;">Spicer, the brainiest of the bunch. The sheer magnitude of his cranium is enough to crumble the ground beneath him if it weren't for his indomitable will over reality.</div>
 		</div>
+		<h2><a href="https://miroware.io/" style="text-decoration: none;">GRANT</a></h2>
+		<div style="display: flex;">
+			<img src="/img/about_grant.png" width="150" height="150" style="margin-right: 1em;">
+			<div style="flex-grow: 1;">Grant, the distinguished little red cube gremlin running around the inner workings of the site. He's the one that keeps the place together.</div>
+		</div>
 	</div>
 `;
 this.value += (await load("load/foot", this)).value;
