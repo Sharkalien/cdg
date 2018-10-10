@@ -1,5 +1,5 @@
 body {
-	background-color: #64b2db;
+	background-color: darkorange;
 	margin: 0;
 	font-family: "Arial", sans-serif;
 	font-weight: bold;
@@ -19,7 +19,7 @@ body {
 	padding: 0 20px;
 }
 #subdiv {
-	background-color: #64b2db;
+	background-color: orange;
 }
 header {
 	padding-top: 15px;
@@ -45,7 +45,7 @@ main {
 	padding: 20px 30px;
 }
 .box {
-	background-color: #ffe899;
+	background-color: black;
 	padding: 30px;
 	margin: 20px 0;
 }
@@ -69,7 +69,10 @@ center {
 	margin: 1em 0;
 }
 .post .date {
-	color: initial;
+	color: orange;
+}
+.post {
+	color:orange;
 }
 #buttons {
 	text-align: center;
