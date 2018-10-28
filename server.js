@@ -11,10 +11,7 @@ const pageNameTest = /\/(.*?)\/?$/;
 const brs = /\n/g;
 const whitespace = /[\s-]+/g;
 const hyphens = /-/g;
-const formatDate = d => {
-	d = new Date(d);
-	return `${d.getMonth() + 1}-${d.getDate()}.${d.getFullYear()}`;
-};
+const formatDate = d => date("m-d.Y", d);
 const cleanTag = tag => tag && tag.trim().toLowerCase().replace(whitespace, "-");
 const forTags = (tag, i, tags) => tag && tags.indexOf(tag) === i;
 const byTagClass = tag => `tag_${tag}`;
