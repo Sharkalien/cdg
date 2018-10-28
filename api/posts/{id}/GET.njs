@@ -1,5 +1,5 @@
 this.res.set("Content-Type", "application/json");
-const id = parseInt(this.params.id) - 1;
+const id = (parseInt(this.params.id) || 0) - 1;
 if(posts[id]) {
 	this.value = {
 		...posts[id]

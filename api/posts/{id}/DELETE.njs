@@ -1,5 +1,5 @@
 await verify(this);
-const id = parseInt(this.params.id) - 1;
+const id = (parseInt(this.params.id) || 0) - 1;
 if(posts[id]) {
 	posts.splice(id, 1);
 	save();

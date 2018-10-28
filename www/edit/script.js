@@ -29,6 +29,7 @@
 					};
 					req.send(JSON.stringify({
 						token: user.getAuthResponse().id_token,
+						title: form.elements.title.value,
 						body: form.elements.body.value,
 						tags: form.elements.tags.value
 					}));
@@ -36,7 +37,7 @@
 			});
 		});
 	});
-	window.onbeforeunload = () => form.elements.body.value || form.elements.tags.value || undefined;
+	window.onbeforeunload = () => form.elements.title.value || form.elements.body.value || form.elements.tags.value || undefined;
 	const author = document.querySelector("#preview .author");
 	const body = document.querySelector("#preview .body");
 	const tags = document.querySelector("#preview .tags");
@@ -59,6 +60,7 @@
 					if(id === form.elements.id.value) {
 						const post = JSON.parse(req.responseText);
 						author.textContent = post.user.name;
+						form.elements.title.value = post.title;
 						form.elements.body.value = post.body.replace(brTags, "\n");
 						form.elements.tags.value = post.tags.join(", ");
 						inputBody();

@@ -6,6 +6,8 @@ this.value += html`
 				The "Postbox"
 				<br>
 				<br>
+				Title: <input name="title" required></input>
+				<br>
 				<textarea name="body" required></textarea>
 				<br>
 				Tags: <input name="tags"></input>

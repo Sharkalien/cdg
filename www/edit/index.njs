@@ -9,6 +9,8 @@ this.value += html`
 				Post ID: <input name="id" type="number" value="${posts.length}" min="1" max="${posts.length}" step="1">
 				<br>
 				<br>
+				Title: <input name="title" required></input>
+				<br>
 				<textarea name="body" required></textarea>
 				<br>
 				Tags: <input name="tags"></input>
