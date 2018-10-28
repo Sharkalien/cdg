@@ -50,12 +50,12 @@ const defaultPostsPerPage = 10;
 			<br>
 		` : "";
 		tag = cleanTag(tag);
-		let targetPosts = [...posts];
-		if(reverse) {
-			targetPosts = targetPosts.reverse();
-		}
+		let targetPosts = posts;
 		if(tag) {
 			targetPosts = targetPosts.filter(post => post.tags.includes(tag) || cleanTag(users[post.user].name) === tag);
+		}
+		if(reverse) {
+			targetPosts = targetPosts.reverse();
 		}
 		if(targetPosts.length) {
 			if(postsPerPage === 1) {
