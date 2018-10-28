@@ -50,7 +50,7 @@ const defaultPostsPerPage = 10;
 			<br>
 		` : "";
 		tag = cleanTag(tag);
-		let targetPosts = posts;
+		let targetPosts = [...posts];
 		if(tag) {
 			targetPosts = targetPosts.filter(post => post.tags.includes(tag) || cleanTag(users[post.user].name) === tag);
 		}
