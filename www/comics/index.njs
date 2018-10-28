@@ -11,8 +11,16 @@ this.value += html`
 		<br>
 		<a href="https://mspfa.com/?s=20518&p=1">MORNING</a> - Good morning. Time to play a game.<br>
 		<br>
-		<h2>FUNNIES</h2>
-		
+		<h2>FUNNIES</h2>`;
+const targetPosts = posts.filter(post => post.tags.includes("funnies"));
+for(let i = targetPosts.length - 1; i >= 0; i--) {
+	const post = targetPosts[i];
+	if(post.tags.includes("funnies")) {
+		this.value += html`
+		${formatDate(post.date)} <a href="https://comedy-dot.gold/single/tagged/funnies/${i + 1}">$${post.title}</a><br>`;
+	}
+}
+this.value += html`
 	</div>
 `;
 this.value += (await load("load/foot", this)).value;
