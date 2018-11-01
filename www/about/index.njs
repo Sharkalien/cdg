@@ -24,7 +24,7 @@ this.value += html`
 		<h2 id="Chase">CHASE</h2>
 		<div style="display: flex;">
 			<img src="/img/about_chase.png" width="150" height="150" style="margin-right: 1em;">
-			<div style="flex-grow: 1;">Chase, who has a simple dream of owning a genuine ALF fursuit stitched with the very same material the ALF puppets were made with during the run of the show.</div>
+			<div style="flex-grow: 1;">Chase, a big stupid boy of 50 years with no eyes and a disregard for authority. His teachers describe him as a problem child.</div>
 		</div>
 		<h2 id="Spicer">SPICER</h2>
 		<div style="display: flex;">
