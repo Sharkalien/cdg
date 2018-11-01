@@ -22,7 +22,7 @@ this.value = html`
 			<meta property="og:description" content="$${this.description}">
 			<meta name="google-signin-client_id" content="${secret.google.id}">
 			<link rel="stylesheet" href="/css/cdg.css">
-			<link rel="icon" href="/img/halloween.png">
+			<link rel="icon" href="/img/favicon.gif">
 		</head>
 		<body>
 			<div id="superdiv">

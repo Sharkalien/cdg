@@ -1,5 +1,5 @@
 body {
-	background-color: darkorange;
+	background-color: #64b2db;
 	margin: 0;
 	font-family: "Arial", sans-serif;
 	font-weight: bold;
@@ -19,7 +19,7 @@ body {
 	padding: 0 20px;
 }
 #subdiv {
-	background-color: orange;
+	background-color: #64b2db;
 }
 header {
 	padding-top: 15px;
@@ -32,7 +32,7 @@ nav img:hover, #buttons a:hover {
 	margin: 0 auto;
 }
 nav {
-	background-image: url(/img/goldpumpkins.png);
+	background-image: url(/img/goldplatebars.png);
 	background-position: center top;
 	background-repeat: no-repeat;
 	height: 167px;
@@ -45,10 +45,9 @@ main {
 	padding: 20px 30px;
 }
 .box {
-	background-color: black;
+	background-color: #ffe899;
 	padding: 30px;
 	margin: 20px 0;
-	color:orange;
 }
 textarea {
 	width: 100%;
@@ -70,10 +69,7 @@ center {
 	margin: 1em 0;
 }
 .post .date {
-	color: orange;
-}
-.post {
-	color:orange;
+	color: initial;
 }
 #buttons {
 	text-align: center;
