@@ -1,6 +1,6 @@
 await verify(this);
 const id = (parseInt(this.params.id) || 0) - 1;
-if(posts[id]) {
+if (posts[id]) {
 	posts.splice(id, 1);
 	save();
 } else {

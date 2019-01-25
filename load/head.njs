@@ -1,8 +1,8 @@
-if(!this.title) {
+if (!this.title) {
 	this.title = this.req.path.replace(pageNameTest, "$1").toUpperCase() || "GOLD";
 }
 this.title = `COMEDY-DOT.${this.title}`;
-if(!this.description) {
+if (!this.description) {
 	this.description = "COMEDY-DOT.GOLD IS HERE FOR ALL YOUR FUNNY BONE NEEDS";
 }
 this.value = html`

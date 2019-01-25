@@ -13,9 +13,9 @@ this.value += html`
 		<br>
 		<h2>FUNNIES</h2>`;
 const targetPosts = posts.filter(post => post.tags.includes("funnies"));
-for(let i = targetPosts.length - 1; i >= 0; i--) {
+for (let i = targetPosts.length - 1; i >= 0; i--) {
 	const post = targetPosts[i];
-	if(post.tags.includes("funnies")) {
+	if (post.tags.includes("funnies")) {
 		this.value += html`
 		${formatDate(post.date)} <a href="https://comedy-dot.gold/single/tagged/funnies/${i + 1}">$${post.title}</a><br>`;
 	}

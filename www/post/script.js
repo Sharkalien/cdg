@@ -14,8 +14,8 @@
 					req.open("POST", `//api.${location.host}/posts`, true);
 					req.setRequestHeader("Content-Type", "application/json");
 					req.onreadystatechange = () => {
-						if(req.readyState === XMLHttpRequest.DONE) {
-							if(Math.floor(req.status / 100) === 2) {
+						if (req.readyState === XMLHttpRequest.DONE) {
+							if (Math.floor(req.status / 100) === 2) {
 								alert("Post successful!");
 								window.onbeforeunload = undefined;
 								location.href = "/";

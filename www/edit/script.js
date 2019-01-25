@@ -19,8 +19,8 @@
 					req.open("PUT", `//api.${location.host}/posts/${form.elements.id.value}`, true);
 					req.setRequestHeader("Content-Type", "application/json");
 					req.onreadystatechange = () => {
-						if(req.readyState === XMLHttpRequest.DONE) {
-							if(Math.floor(req.status / 100) === 2) {
+						if (req.readyState === XMLHttpRequest.DONE) {
+							if (Math.floor(req.status / 100) === 2) {
 								alert("Edit successful!");
 							} else {
 								alert(`Error ${req.status + (req.responseText ? `:\n${req.responseText}` : "")}`);
@@ -55,9 +55,9 @@
 		const req = new XMLHttpRequest();
 		req.open("GET", `//api.${location.host}/posts/${id = form.elements.id.value}`, true);
 		req.onreadystatechange = () => {
-			if(req.readyState === XMLHttpRequest.DONE) {
-				if(Math.floor(req.status / 100) === 2) {
-					if(id === form.elements.id.value) {
+			if (req.readyState === XMLHttpRequest.DONE) {
+				if (Math.floor(req.status / 100) === 2) {
+					if (id === form.elements.id.value) {
 						const post = JSON.parse(req.responseText);
 						author.textContent = post.user.name;
 						form.elements.title.value = post.title;
@@ -77,7 +77,7 @@
 	form.elements.id.addEventListener("input", inputID);
 	inputID();
 	document.querySelector("#delete").addEventListener("click", () => {
-		if(confirm("Are you sure you want to delete this post?")) {
+		if (confirm("Are you sure you want to delete this post?")) {
 			gapi.load("auth2", () => {
 				gapi.auth2.init().then(auth2 => {
 					auth2.signIn().then(user => {
@@ -85,8 +85,8 @@
 						req.open("DELETE", `//api.${location.host}/posts/${form.elements.id.value}`, true);
 						req.setRequestHeader("Content-Type", "application/json");
 						req.onreadystatechange = () => {
-							if(req.readyState === XMLHttpRequest.DONE) {
-								if(Math.floor(req.status / 100) === 2) {
+							if (req.readyState === XMLHttpRequest.DONE) {
+								if (Math.floor(req.status / 100) === 2) {
 									alert("Deletion successful!");
 									window.onbeforeunload = undefined;
 									location.reload();

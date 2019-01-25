@@ -1,6 +1,6 @@
 await verify(this);
 const id = (parseInt(this.params.id) || 0) - 1;
-if(posts[id]) {
+if (posts[id]) {
 	Object.assign(posts[id], {
 		title: String(this.req.body.title),
 		body: String(this.req.body.body).replace(brs, "<br>"),

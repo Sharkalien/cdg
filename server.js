@@ -41,7 +41,7 @@ const defaultPostsPerPage = 10;
 		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>
 	`;
 	const renderPosts = (page, tag, reverse, postsPerPage) => {
-		if(!postsPerPage) {
+		if (!postsPerPage) {
 			postsPerPage = defaultPostsPerPage;
 		}
 		const prepend = tag ? html`
@@ -51,17 +51,17 @@ const defaultPostsPerPage = 10;
 		` : "";
 		tag = cleanTag(tag);
 		let targetPosts = [...posts];
-		if(tag) {
+		if (tag) {
 			targetPosts = targetPosts.filter(post => post.tags.includes(tag) || cleanTag(users[post.user].name) === tag);
 		}
-		if(reverse) {
+		if (reverse) {
 			targetPosts = targetPosts.reverse();
 		}
-		if(targetPosts.length) {
-			if(postsPerPage === 1) {
+		if (targetPosts.length) {
+			if (postsPerPage === 1) {
 				page = Math.min(targetPosts.length, Math.ceil(page));
 				const i = posts.indexOf(targetPosts[page - 1]);
-				if(i === -1) {
+				if (i === -1) {
 					i = targetPosts.length - 1;
 				}
 				const id = i + 1;
@@ -80,7 +80,7 @@ const defaultPostsPerPage = 10;
 				let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
 				const end = Math.min(targetPosts.length + 1, start + postsPerPage);
 				start = Math.max(0, start);
-				for(const post of targetPosts.slice(start, end).reverse()) {
+				for (const post of targetPosts.slice(start, end).reverse()) {
 					const i = posts.indexOf(post);
 					value += renderPost(i + 1, i);
 				}
@@ -109,7 +109,7 @@ const defaultPostsPerPage = 10;
 	const verify = context => new Promise(resolve => {
 		try {
 			context.req.body = JSON.parse(context.req.body);
-		} catch(err) {
+		} catch (err) {
 			context.status = 400;
 			context.value = err.message;
 			context.done();
@@ -121,7 +121,7 @@ const defaultPostsPerPage = 10;
 		}).then(async ticket => {
 			const id = ticket.getPayload().sub;
 			const user = users[id];
-			if(user) {
+			if (user) {
 				resolve(id);
 			} else {
 				context.value = "Your IP has been recorded and traced. You will not be safe.";

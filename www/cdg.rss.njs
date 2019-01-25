@@ -9,7 +9,7 @@ this.value = html`
 		<pubDate>Sat, 07 Apr 2018 19:42:21 -0400</pubDate>
 		<ttl>60</ttl>`;
 const end = Math.max(0, posts.length - 20);
-for(let i = posts.length - 1; i >= end; i--) {
+for (let i = posts.length - 1; i >= end; i--) {
 	const id = i + 1;
 	this.value += html`
 		<item>
