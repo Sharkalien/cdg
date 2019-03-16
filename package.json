@@ -20,6 +20,6 @@
 		"google-auth-library": "^1.6.1",
 		"phpdate-js": "^1.0.3",
 		"replthis": "^1.0.2",
-		"servecube": "^1.16.13"
+		"servecube": "^1.16.17"
 	}
 }
