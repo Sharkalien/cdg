@@ -9,7 +9,7 @@ this.value += html`
 		<br>
 		<a href="https://mspfa.com/?s=23208&p=1">SCAREHOUSE</a> - A Romantic Hero navigates through the corridors of a Gothic mansion.<br>
 		<br>
-		<a href="https://mspfa.com/?s=20518&p=1">MORNING</a> - Good morning. Time to play a game.<br>
+		<a href="https://mspfa.com/?s=27439&p=1">HOME-SKILLET</a> - A tale about a boy and his GNARLY friends and an ILL game the GO POSTAL ON together.<br>
 		<br>
 		<h2>FUNNIES</h2>`;
 const targetPosts = posts.filter(post => post.tags.includes("funnies"));
