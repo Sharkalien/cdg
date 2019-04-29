@@ -11,6 +11,8 @@ this.value += html`
 		<br>
 		<a href="https://mspfa.com/?s=27439&p=1">HOME-SKILLET</a> - A tale about a boy and his GNARLY friends and an ILL game they GO POSTAL ON together.<br>
 		<br>
+		<a href="https://mspfa.com/?s=26246&p=1">Divine Interference: Cosmic Exertion</a> - Some guy wants to play SBURB again.<br>
+		<br>
 		<h2>FUNNIES</h2>`;
 const targetPosts = posts.filter(post => post.tags.includes("funnies"));
 for (let i = targetPosts.length - 1; i >= 0; i--) {
