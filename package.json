@@ -18,7 +18,7 @@
 	"dependencies": {
 		"discord.js": "^11.5.1",
 		"fs-extra": "^5.0.0",
-		"google-auth-library": "^1.6.1",
+		"google-auth-library": "^5.5.0",
 		"phpdate-js": "^1.0.3",
 		"replthis": "^1.0.2",
 		"servecube": "^1.17.0"
