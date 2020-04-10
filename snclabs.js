@@ -12,7 +12,7 @@ client.once("error", exitOnError);
 client.once("disconnect", exitOnError);
 let guild;
 client.once("ready", () => {
-	guild = client.guilds.get("499806592552927232");
+	guild = client.guilds.get("697985207604871219");
 });
 const syntax = /^#(.+)(?:\n((?:.|\n)+))?$/;
 client.on("message", msg => {
