@@ -40,10 +40,7 @@ const defaultPostsPerPage = 10;
 		<br>
 		<center>THE COMEDY GOLD MINE HAS RUN DRY.</center>
 	`;
-	const renderPosts = (page, tag, reverse, postsPerPage) => {
-		if (!postsPerPage) {
-			postsPerPage = defaultPostsPerPage;
-		}
+	const renderPosts = (page, tag, reverse, postsPerPage = defaultPostsPerPage) => {
 		const prepend = tag ? html`
 			<br>
 			<i>tagged: $${tag}</i>
@@ -77,9 +74,8 @@ const defaultPostsPerPage = 10;
 				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
 				page = Math.min(maxPage, Math.ceil(page));
-				let start = (postsPerPage * (page - 2) + targetPosts.length % postsPerPage) % -10;
-				const end = Math.min(targetPosts.length + 1, start + postsPerPage);
-				start = Math.max(0, start);
+				const end = targetPosts.length - postsPerPage * (maxPage - page) + 1;
+				const start = Math.max(0, end - postsPerPage);
 				for (const post of targetPosts.slice(start, end).reverse()) {
 					const i = posts.indexOf(post);
 					value += renderPost(i + 1, i);
