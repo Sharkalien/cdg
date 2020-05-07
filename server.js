@@ -74,7 +74,7 @@ const defaultPostsPerPage = 10;
 				let value = "";
 				const maxPage = Math.ceil(targetPosts.length / postsPerPage);
 				page = Math.min(maxPage, Math.ceil(page));
-				const end = targetPosts.length - postsPerPage * (maxPage - page) + 1;
+				const end = targetPosts.length - postsPerPage * (maxPage - page);
 				const start = Math.max(0, end - postsPerPage);
 				for (const post of targetPosts.slice(start, end).reverse()) {
 					const i = posts.indexOf(post);
