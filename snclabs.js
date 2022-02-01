@@ -28,10 +28,10 @@ client.on("message", msg => {
 				}).then(({ url }) => {
 					msg.channel.send(`<${url}>`);
 				}).catch(({ message }) => {
-					msg.channel.send(`👃 ${message}`);
+					msg.channel.send(`${message} 👃👃👃`);
 				});
 			} else {
-				msg.channel.send("👃 Channel not found");
+				msg.channel.send("Channel not found 👃👃👃");
 			}
 		} else {
 			match = msg.content.match(messageSyntax);
