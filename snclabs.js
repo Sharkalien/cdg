@@ -14,7 +14,7 @@ client.once("error", exitOnError);
 client.once("disconnect", exitOnError);
 let guild;
 client.once("ready", () => {
-	guild = client.guilds.get("697985207604871219");
+	guild = client.guilds.cache.get("697985207604871219");
 });
 const channelSyntax = /^#(.+)(?:\n((?:.|\n)+))?$/;
 const messageSyntax = /^https:\/\/discord\.com\/channels\/\d+\/(\d+)\/(\d+)(?:\n((?:.|\n)+))?$/;
