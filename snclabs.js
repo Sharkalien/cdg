@@ -3,7 +3,8 @@ console.log("< SNCLabs Archive Bot >");
 const fs = require("fs");
 const Discord = require("discord.js");
 const client = new Discord.Client({
-	intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES']
+	intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES'],
+	partials: ['CHANNEL']
 });
 const exitOnError = err => {
 	console.error(err);
@@ -18,11 +19,11 @@ client.once("ready", () => {
 });
 const channelSyntax = /^#(.+)(?:\n((?:.|\n)+))?$/;
 const messageSyntax = /^https:\/\/discord\.com\/channels\/\d+\/(\d+)\/(\d+)(?:\n((?:.|\n)+))?$/;
-client.on("message", msg => {
+client.on("messageCreate", msg => {
 	if (msg.author && msg.author.id === "100950015454773248" && msg.channel.id === "625518313157689349") {
 		let match = msg.content.match(channelSyntax);
 		if (match) {
-			const channel = guild.channels.find(({ name }) => name === match[1]);
+			const channel = guild.channels.cache.find(({ name }) => name === match[1]);
 			if (channel && channel.type === 'text') {
 				channel.send({
 					content: match[2],
@@ -38,7 +39,7 @@ client.on("message", msg => {
 		} else {
 			match = msg.content.match(messageSyntax);
 			if (match) {
-				const channel = guild.channels.get(match[1]);
+				const channel = guild.channels.cache.get(match[1]);
 				if (channel && channel.type === 'text') {
 					channel.messages.edit(match[2], {
 						content: match[3],
