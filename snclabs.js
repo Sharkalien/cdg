@@ -2,7 +2,9 @@
 console.log("< SNCLabs Archive Bot >");
 const fs = require("fs");
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({
+	intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES']
+});
 const exitOnError = err => {
 	console.error(err);
 	process.exit(1);
